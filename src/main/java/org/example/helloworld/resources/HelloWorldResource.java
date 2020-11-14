@@ -24,15 +24,10 @@ public class HelloWorldResource {
     this.counter = new AtomicLong();
   }
 
-//  @GET
-//  @Timed
-//  public Saying sayHello(@QueryParam("name") Optional<String> name) {
-//    final String value = String.format(template, name.orElse(defaultName));
-//    return new Saying(counter.incrementAndGet(), value);
-//  }
   @GET
   @Timed
-  public String sayHello(@QueryParam("name") Optional<String> name) {
-    return "Hello!";
+  public Saying sayHello(@QueryParam("name") Optional<String> name) {
+    final String value = String.format(template, name.orElse(defaultName));
+    return new Saying(counter.incrementAndGet(), value);
   }
 }
