@@ -1,4 +1,4 @@
-package org.example.helloworld;
+package org.example.hospital_management_system;
 
 /**
  * Hello world!
@@ -7,9 +7,10 @@ package org.example.helloworld;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-
-import org.example.helloworld.health.TemplateHealthCheck;
-import org.example.helloworld.resources.HelloWorldResource;
+import org.example.hospital_management_system.health.TemplateHealthCheck;
+import org.example.hospital_management_system.resources.DoctorResource;
+import org.example.hospital_management_system.resources.HelloWorldResource;
+import org.example.hospital_management_system.service.DoctorService;
 
 
 public class HelloWorldApplication extends Application<HelloWorldConfiguration> {
@@ -30,13 +31,22 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
     @Override
     public void run(HelloWorldConfiguration configuration,
         Environment environment) {
+//        JerseyEnvironment jersey = environment.jersey();
+
         final HelloWorldResource resource = new HelloWorldResource(
             configuration.getTemplate(),
             configuration.getDefaultName()
         );
         final TemplateHealthCheck healthCheck =
             new TemplateHealthCheck(configuration.getTemplate());
+
         environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(resource);
+
+//        final Data data = new Data();
+//        jersey.register(Data.class);
+//        environment.jersey().register(data);
+        environment.jersey().register(new DoctorService());
+        environment.jersey().register(DoctorResource.class);
     }
 }

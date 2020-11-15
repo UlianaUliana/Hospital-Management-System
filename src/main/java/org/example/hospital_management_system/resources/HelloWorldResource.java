@@ -1,4 +1,4 @@
-package org.example.helloworld.resources;
+package org.example.hospital_management_system.resources;
 
 import com.codahale.metrics.annotation.Timed;
 
@@ -9,7 +9,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.Optional;
-import org.example.helloworld.api.Saying;
+import org.example.hospital_management_system.api.Saying;
 
 @Path("/hello-world")
 @Produces(MediaType.APPLICATION_JSON)

@@ -1,4 +1,4 @@
-package org.example.helloworld;
+package org.example.hospital_management_system;
 
 import io.dropwizard.Configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;

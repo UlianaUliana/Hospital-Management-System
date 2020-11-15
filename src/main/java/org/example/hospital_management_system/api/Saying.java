@@ -1,4 +1,4 @@
-package org.example.helloworld.api;
+package org.example.hospital_management_system.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
