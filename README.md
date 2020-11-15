@@ -1,4 +1,5 @@
 # Hospital-Management-System
+You need Lombok plugin installed
 ## Build the project:
 mvn clean install
 ## Run the program:
