@@ -1,6 +1,6 @@
 package org.example.hospital_management_system.service;
 
-import org.example.hospital_management_system.api.model.Data;
+import org.example.hospital_management_system.api.Data;
 import org.example.hospital_management_system.api.model.Doctor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

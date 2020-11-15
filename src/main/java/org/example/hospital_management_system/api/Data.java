@@ -1,7 +1,9 @@
-package org.example.hospital_management_system.api.model;
+package org.example.hospital_management_system.api;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.example.hospital_management_system.api.model.Doctor;
+
 import javax.validation.constraints.NotNull;
 import java.util.List;
 

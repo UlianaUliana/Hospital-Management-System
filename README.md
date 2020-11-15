@@ -3,7 +3,6 @@ You need Lombok plugin installed
 ## Build the project:
 mvn clean install
 ## Run the program:
-java -jar target/hospital-management-system-1.0-SNAPSHOT.jar server hello-world.yml
+java -jar target/hospital-management-system-1.0-SNAPSHOT.jar server hospital-management-system.yml
 ## Call in browser
-http://localhost:8080/application/hello-world  
-http://localhost:8080/application/hello-world?name=Successful+Dropwizard+User
+http://localhost:/application/doctors

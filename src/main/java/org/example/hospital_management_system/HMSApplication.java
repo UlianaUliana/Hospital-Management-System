@@ -1,21 +1,20 @@
 package org.example.hospital_management_system;
 
 /**
- * Hello world!
+ * Hospital Management System
  *
  */
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import org.example.hospital_management_system.health.TemplateHealthCheck;
+import org.example.hospital_management_system.health.HMSHealthCheck;
 import org.example.hospital_management_system.resources.DoctorResource;
-import org.example.hospital_management_system.resources.HelloWorldResource;
 import org.example.hospital_management_system.service.DoctorService;
 
 
-public class HelloWorldApplication extends Application<HelloWorldConfiguration> {
+public class HMSApplication extends Application<HMSConfiguration> {
     public static void main(String[] args) throws Exception {
-        new HelloWorldApplication().run(args);
+        new HMSApplication().run(args);
     }
 
     @Override
@@ -24,24 +23,18 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
     }
 
     @Override
-    public void initialize(Bootstrap<HelloWorldConfiguration> bootstrap) {
+    public void initialize(Bootstrap<HMSConfiguration> bootstrap) {
         // nothing to do yet
     }
 
     @Override
-    public void run(HelloWorldConfiguration configuration,
+    public void run(HMSConfiguration configuration,
         Environment environment) {
 //        JerseyEnvironment jersey = environment.jersey();
 
-        final HelloWorldResource resource = new HelloWorldResource(
-            configuration.getTemplate(),
-            configuration.getDefaultName()
-        );
-        final TemplateHealthCheck healthCheck =
-            new TemplateHealthCheck(configuration.getTemplate());
+        final HMSHealthCheck healthCheck = new HMSHealthCheck();
 
-        environment.healthChecks().register("template", healthCheck);
-        environment.jersey().register(resource);
+        environment.healthChecks().register("HMSHealthCheck", healthCheck);
 
 //        final Data data = new Data();
 //        jersey.register(Data.class);
