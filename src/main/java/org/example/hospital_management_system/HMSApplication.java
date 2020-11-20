@@ -10,6 +10,7 @@ import io.dropwizard.setup.Environment;
 import org.example.hospital_management_system.health.HMSHealthCheck;
 import org.example.hospital_management_system.resources.DoctorResource;
 import org.example.hospital_management_system.service.DoctorService;
+import io.dropwizard.views.ViewBundle;
 
 
 public class HMSApplication extends Application<HMSConfiguration> {
@@ -24,7 +25,7 @@ public class HMSApplication extends Application<HMSConfiguration> {
 
     @Override
     public void initialize(Bootstrap<HMSConfiguration> bootstrap) {
-        // nothing to do yet
+        bootstrap.addBundle(new ViewBundle<HMSConfiguration>());
     }
 
     @Override
