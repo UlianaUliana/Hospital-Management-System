@@ -9,7 +9,9 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.example.hospital_management_system.health.HMSHealthCheck;
 import org.example.hospital_management_system.resources.DoctorResource;
+import org.example.hospital_management_system.resources.PatientResource;
 import org.example.hospital_management_system.service.DoctorService;
+import org.example.hospital_management_system.service.PatientService;
 
 
 public class HMSApplication extends Application<HMSConfiguration> {
@@ -41,5 +43,8 @@ public class HMSApplication extends Application<HMSConfiguration> {
 //        environment.jersey().register(data);
         environment.jersey().register(new DoctorService());
         environment.jersey().register(DoctorResource.class);
+
+        environment.jersey().register(new PatientService());
+        environment.jersey().register(PatientResource.class);
     }
 }
