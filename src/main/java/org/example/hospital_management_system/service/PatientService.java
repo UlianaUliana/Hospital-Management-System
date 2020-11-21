@@ -30,33 +30,49 @@ public class PatientService {
     return null;
   }
 
-  public void addDoctor(Patient patient, Doctor doctor) {
-    patient.getDoctors().add(doctor);
+  public void addDoctor(UUID patientId, Doctor doctor) {
+    getPatientById(patientId).getDoctors().add(doctor);
   }
 
-  public void addAppointment(Patient patient, Appointment appointment) {
-    patient.getAppointments().add(appointment);
+  public void addAppointment(UUID patientId, Appointment appointment) {
+    getPatientById(patientId).getAppointments().add(appointment);
   }
 
-  public List<Analysis> getAllAnalysesByAppointment(Patient patient, Appointment appointment) {
-    for(Appointment appoint : patient.getAppointments()) {
-      if(appoint.getId() == appointment.getId()) {
+  public List<Analysis> getAllAnalysesByAppointment(UUID patientId, UUID appointmentId) {
+    for(Appointment appoint : getPatientById(patientId).getAppointments()) {
+      if(appoint.getId() == appointmentId) {
         return appoint.getAnalyses();
       }
     }
     return null;
   }
 
-  public List<Analysis> getAllAnalyses(Patient patient) {
+  public List<Analysis> getAllAnalyses(UUID patientId) {
     List<Analysis> analysesList = new ArrayList<>();
-    for(Appointment appointment : patient.getAppointments()) {
-      analysesList.addAll(getAllAnalysesByAppointment(patient, appointment));
+    for(Appointment appointment : getPatientById(patientId).getAppointments()) {
+      analysesList.addAll(getAllAnalysesByAppointment(patientId, appointment.getId()));
     }
     return analysesList;
   }
 
-  public void addAnalysis(Patient patient, Doctor doctor, Appointment appointment, Analysis analysis) {
-    // ToDo
+  public void addAnalysis(UUID patientId, Analysis analysis) {
+    getAllAnalyses(patientId).add(analysis);
+  }
+
+  public void createOrUpdatePatient(Patient newPatient) {
+    Patient patient = getPatientById(newPatient.getId());
+    if(patient == null) {
+      data.getPatients().add(newPatient);
+    } else {
+      patient.setFirstName(newPatient.getFirstName());
+      patient.setLastName(newPatient.getLastName());
+      patient.setAge(newPatient.getAge());
+      patient.setAddress(newPatient.getAddress());
+    }
+  }
+
+  public void deletePatient(UUID patientId) {
+    getAllPatients().remove(getPatientById(patientId));
   }
 
 }
