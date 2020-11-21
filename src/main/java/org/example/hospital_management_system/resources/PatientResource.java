@@ -90,17 +90,19 @@ public class PatientResource {
     service.createOrUpdatePatient(patient);
   }
 
-  @PUT
+//  @PUT
+  @GET
   @Timed
   @Path("/edit")
   public void updatePatient(Patient patient) {
     service.createOrUpdatePatient(patient);
   }
 
-  @DELETE
+//  @DELETE
+  @GET
   @Timed
   @Path("/delete/{id}")
-  public void deleteDoctor(@PathParam("id") UUID patientId) {
+  public void deletePatient(@PathParam("id") UUID patientId) {
     service.deletePatient(patientId);
   }
 }

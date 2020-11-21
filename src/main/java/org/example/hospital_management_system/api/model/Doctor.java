@@ -24,6 +24,13 @@ public class Doctor {
         this.specialty = specialty;
     }
 
+    public Doctor(UUID id, String firstName, String lastName, String specialty) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.specialty = specialty;
+    }
+
     @Override
     public String toString() {
         return this.id + " " + this.firstName + " " + this.lastName + " " + this.specialty;

@@ -4,6 +4,7 @@ import org.example.hospital_management_system.api.Data;
 import org.example.hospital_management_system.api.model.Appointment;
 import org.example.hospital_management_system.api.model.Doctor;
 import org.example.hospital_management_system.api.model.Patient;
+import org.example.hospital_management_system.exeptions.NoSuchResourceException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +25,11 @@ public class DoctorService {
 
     public Doctor getDoctorById(UUID id) {
         for(Doctor doctor : getAllDoctors()) {
-            if(doctor.getId() == id) {
+            if(doctor.getId().equals(id)) {
                 return doctor;
             }
         }
-        return null;
+        throw new NoSuchResourceException("There is no doctor with such id");
     }
 
     public List<Doctor> getAllDoctorsBySpecialty(String specialty) {

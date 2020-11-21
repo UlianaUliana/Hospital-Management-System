@@ -3,13 +3,7 @@ package org.example.hospital_management_system.resources;
 import com.codahale.metrics.annotation.Timed;
 
 import javax.inject.Inject;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import lombok.AllArgsConstructor;
@@ -48,8 +42,8 @@ public class DoctorResource {
 
     @GET
     @Timed
-    @Path("/{specialty}")
-    public String getAllDoctorsBySpecialty(@PathParam("specialty") String specialty) {
+    @Path("/specialty")
+    public String getAllDoctorsBySpecialty(@QueryParam("specialty") String specialty) {
         return service.getAllDoctorsBySpecialty(specialty).toString();
     }
 
@@ -74,14 +68,16 @@ public class DoctorResource {
         service.createOrUpdateDoctor(doctor);
     }
 
-    @PUT
+//    @PUT
+    @GET
     @Timed
     @Path("/edit")
     public void updateDoctor(Doctor doctor) {
         service.createOrUpdateDoctor(doctor);
     }
 
-    @DELETE
+//    @DELETE
+    @GET
     @Timed
     @Path("/delete/{id}")
     public void deleteDoctor(@PathParam("id") UUID doctorId) {

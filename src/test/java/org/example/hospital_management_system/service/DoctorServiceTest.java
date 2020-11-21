@@ -24,7 +24,7 @@ public class DoctorServiceTest {
     public void getAllDoctorsTestReturnsDoctors() {
         when(data.getDoctors()).thenReturn(List.of(
             new Doctor("Oksana", "Kostiuk", "Cardiologist"),
-            new Doctor("Ivan", "Myhovych", "Endocrinologist"));
+            new Doctor("Ivan", "Myhovych", "Endocrinologist")));
         assertEquals(service.getAllDoctors().get(0).getFirstName(), "Oksana");
     }
 }

@@ -25,8 +25,16 @@ public class Patient {
     this.address = address;
   }
 
+  public Patient(UUID id, String firstName, String lastName, int age, String address) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.address = address;
+  }
+
   @Override
   public String toString() {
-    return this.id + " " + this.firstName + " " + this.lastName + " " + this.age;
+    return this.id + " " + this.firstName + " " + this.lastName + " " + this.age + " " + this.address;
   }
 }

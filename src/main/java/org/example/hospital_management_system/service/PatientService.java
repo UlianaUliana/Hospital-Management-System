@@ -9,6 +9,7 @@ import org.example.hospital_management_system.api.model.Analysis;
 import org.example.hospital_management_system.api.model.Appointment;
 import org.example.hospital_management_system.api.model.Doctor;
 import org.example.hospital_management_system.api.model.Patient;
+import org.example.hospital_management_system.exeptions.NoSuchResourceException;
 
 public class PatientService {
   private Data data;
@@ -23,11 +24,11 @@ public class PatientService {
 
   public Patient getPatientById(UUID id) {
     for(Patient patient : getAllPatients()) {
-      if(patient.getId() == id) {
+      if(patient.getId().equals(id)) {
         return patient;
       }
     }
-    return null;
+    throw new NoSuchResourceException("There is no patient with such id");
   }
 
   public void addDoctor(UUID patientId, Doctor doctor) {
